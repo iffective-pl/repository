@@ -5,4 +5,4 @@ WORKDIR /docker-registry
 RUN mkdir data
 RUN mkdir auth
 WORKDIR auth
-RUN htpasswd -Bc registry.password docker "7DqdgwYb8M"
+RUN htpasswd -b -cB registry.password docker 7DqdgwYb8M
