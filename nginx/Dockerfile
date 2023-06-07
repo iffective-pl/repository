@@ -1,2 +1,2 @@
 FROM nginx
-COPY iffective.conf conf.d/default.conf
+COPY iffective.conf site-available/default
