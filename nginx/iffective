@@ -10,8 +10,8 @@ server {
 server {
     listen 443 ssl;
     server_name docker.iffective.dk;
-	ssl_certificate /etc/nginx/ssl/docker.iffective.dk/fullchain.pem;
-	ssl_certificate_key /etc/nginx/ssl/docker.iffective.dk/privkey.pem;
+	ssl_certificate /etc/nginx/ssl/live/docker.iffective.dk/fullchain.pem;
+	ssl_certificate_key /etc/nginx/ssl/live/docker.iffective.dk/privkey.pem;
     ssl_protocols TLSv1.3;
     ssl_ciphers HIGH:!aNULL:!MD5;
 
