@@ -7,12 +7,12 @@ jobs:
   deploy:
     runs-on: self-hosted
     environment: production
-    secrets:
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     steps:
     - uses: actions/checkout@v3
     - name: Enable letsencrypt
       run: chmod +x init-letsencrypt.sh
+      with:
+        password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Init letsencrypt
       run: ./init-letsencrypt.sh
     - name: Deploy docker images
