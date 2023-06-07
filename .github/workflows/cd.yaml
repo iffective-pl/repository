@@ -12,9 +12,9 @@ jobs:
     - name: Enable letsencrypt
       run: chmod +x init-letsencrypt.sh
     - name: Init letsencrypt
+      run: ./init-letsencrypt.sh
       with:
         secrets: |
           "DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}"
-      run: ./init-letsencrypt.sh
     - name: Deploy docker images
       run: docker compose up -d
