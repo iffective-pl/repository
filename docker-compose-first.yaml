@@ -15,7 +15,7 @@ services:
     image: certbot/certbot
     volumes:
       - www:/var/www/certbot/:rw
-    cmd: certbot certonly --webroot --webroot-path /var/www/certbot/ --dry-run -d docker.iffective.dk
+    command: certbot certonly --webroot --webroot-path /var/www/certbot/ --dry-run -d docker.iffective.dk
 
 volumes:
   www:
