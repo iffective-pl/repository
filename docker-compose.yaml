@@ -22,7 +22,6 @@ services:
       
 volumes:
   ssl:
-    external: true
 
 networks:
   iffective:
