@@ -7,8 +7,8 @@ jobs:
   deploy:
     runs-on: self-hosted
     environment: production
-    secrets: |
-      "DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}"
+    secrets:
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     steps:
     - uses: actions/checkout@v3
     - name: Enable letsencrypt
