@@ -12,6 +12,6 @@ jobs:
     - name: Build docker images
       run: docker compose build --no-cache
     - name: Generate htpasswd
-      run: docker compose run --entrypoint="htpasswdhttpd:2-Bbnchtpasswddocker${{ secrets.DOCKER_PASSWORD }}" registry
+      run: docker compose run --entrypoint="htpasswd httpd:2 -Bbnc htpasswd docker ${{ secrets.DOCKER_PASSWORD }}" registry
     - name: Deploy docker images
       run: docker compose up -d
