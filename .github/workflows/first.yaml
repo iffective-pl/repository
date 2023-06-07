@@ -9,4 +9,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Prepare cerificates
-      run: docker compose up
+      run: docker compose -f docker-compose-first.yaml up
