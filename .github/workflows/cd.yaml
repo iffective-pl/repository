@@ -9,6 +9,8 @@ jobs:
     environment: production
     steps:
     - uses: actions/checkout@v3
+    - name: Build docker images
+      run: docker compose build --no-cache
     - name: Enable letsencrypt
       run: chmod +x init-letsencrypt.sh
     - name: Init letsencrypt
