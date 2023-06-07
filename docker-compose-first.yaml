@@ -23,7 +23,6 @@ services:
 volumes:
   www:
   ssl:
-    external: true
      
 networks:
   iffective:
