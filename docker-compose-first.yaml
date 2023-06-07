@@ -1,0 +1,25 @@
+version: "3.9"
+
+name: "iffective"
+
+services:
+  nginx-first:
+    build:
+      context: nginx
+      dockerfile: Dockerfile.first
+    volumes:
+      - www:/var/www/certbot:ro
+    ports:
+      - "80:80"
+  certbot-first:
+    image: certbot/certbot
+    volumes:
+      - www:/var/www/certbot/:rw
+    cmd: certbot certonly --webroot --webroot-path /var/www/certbot/ --dry-run -d docker.iffective.dk
+
+volumes:
+  www:
+  ssl:
+     
+networks:
+  iffective:
