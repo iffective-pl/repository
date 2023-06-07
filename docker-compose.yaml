@@ -6,11 +6,14 @@ services:
   registry:
     build:
       context: registry
+    volumes:
+      - data:/data
     environment:
       REGISTRY_AUTH: htpasswd
-      REGISTRY_AUTH_HTPASSWD_REALM: Registry
-      REGISTRY_AUTH_HTPASSWD_PATH: /auth/registry.password
+      REGISTRY_AUTH_HTPASSWD_REALM: "Registry Realm"
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
       REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data
+    restart: on-failure
   nginx:
     build:
       context: nginx
@@ -19,9 +22,11 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    restart: on-failure
       
 volumes:
   ssl:
+  data:
 
 networks:
   iffective:
