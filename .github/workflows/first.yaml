@@ -12,5 +12,5 @@ jobs:
       run: docker compose -f docker-compose-first.yaml build --no-cache
     - name: Prepare cerificates
       run: docker compose -f docker-compose-first.yaml up --abort-on-container-exit
-    - name: Prepare cerificates
+    - name: Cleanup
       run: docker compose -f docker-compose-first.yaml down

@@ -1,2 +1,3 @@
 FROM nginx
-COPY iffective.conf site-available/default
+WORKDIR /etc/nginx/conf.d
+COPY iffective default.conf
