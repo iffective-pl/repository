@@ -5,4 +5,3 @@ WORKDIR /docker-registry
 RUN mkdir data
 RUN mkdir auth
 WORKDIR auth
-COPY registry.password registry.password

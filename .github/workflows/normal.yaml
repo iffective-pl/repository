@@ -6,9 +6,12 @@ on:
 jobs:
   deploy:
     runs-on: [self-hosted, production]
+    environment: production
     steps:
     - uses: actions/checkout@v3
     - name: Build docker images
       run: docker compose build --no-cache
+    - name: Generate htpasswd
+      run: docker run --entrypoint htpasswd -b -cB registry.password docker ${{ secrets.DOCKER_PASSWORD }}
     - name: Deploy docker images
       run: docker compose up -d
