@@ -11,6 +11,8 @@ services:
       - www:/var/www/certbot:ro
     ports:
       - "80:80"
+    depends_on: 
+      - nginx-first
   certbot-first:
     image: certbot/certbot
     volumes:

@@ -5,8 +5,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
-    environment: production
+    runs-on: [self-hosted, production]
     steps:
     - uses: actions/checkout@v3
     - name: Build docker images
