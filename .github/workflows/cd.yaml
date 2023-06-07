@@ -1,0 +1,17 @@
+name: "CD pipeline"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    environment: production
+    steps:
+    - uses: actions/checkout@v3
+    - name: Init letsencrypt
+      env:
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: ./init-letsencrypt.sh
+    - name: Deploy docker images
+      run: docker compose up -d
