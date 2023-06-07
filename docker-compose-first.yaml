@@ -11,13 +11,13 @@ services:
       - www:/var/www/certbot:ro
     ports:
       - "80:80"
-    depends_on: 
-      - certbot-first
   certbot-first:
     image: certbot/certbot
     volumes:
       - www:/var/www/certbot/:rw
     command: certonly --webroot --webroot-path /var/www/certbot/ -d docker.iffective.dk --non-interactive --agree-tos -m mat.lapies@gmail.com
+    depends_on: 
+      - nginx-first
     
 volumes:
   www:
