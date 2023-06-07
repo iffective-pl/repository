@@ -11,7 +11,7 @@ services:
     environment:
       REGISTRY_AUTH: htpasswd
       REGISTRY_AUTH_HTPASSWD_REALM: "Registry Realm"
-      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /docker-registry/auth/htpasswd
       REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data
     restart: on-failure
   nginx:
