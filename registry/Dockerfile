@@ -1,6 +1,6 @@
 FROM registry
 ENV DOCKER_PASSWORD $password
-RUN apk add apache2-utils -y
+RUN apk add apache2-utils
 RUN mkdir /docker-registry
 WORKDIR /docker-registry
 RUN mkdir data
