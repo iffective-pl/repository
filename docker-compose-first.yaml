@@ -12,7 +12,7 @@ services:
     ports:
       - "80:80"
     depends_on: 
-      - nginx-first
+      - certbot-first
   certbot-first:
     image: certbot/certbot
     volumes:
