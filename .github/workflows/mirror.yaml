@@ -1,0 +1,24 @@
+name: Mirror Docker Images
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 1 * * *"
+
+jobs:
+  mirror:
+    name: Mirror Images
+    runs-on: ubuntu-latest
+    environment: production
+    strategy:
+        matrix:
+          image: ${{ variables.IMAGES }}
+    steps:
+      - name: Pull Image from Docker Hub
+        run: docker pull ${{ matrix.image }}
+    
+      - name: Tag Image
+        run: docker tag ${{ matrix.image }} docker.iffective.dk/${{ matrix.image }}
+      
+      - name: Push Image
+        run: docker push docker.iffective.dk/${{ matrix.image }}
