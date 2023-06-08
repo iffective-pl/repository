@@ -7,7 +7,7 @@ on:
 
 jobs:
   mirror:
-    name: Mirror Images
+    name: Mirror images
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -22,6 +22,15 @@ jobs:
         
       - name: Push postgres image
         run: docker push docker.iffective.dk/postgres
+        
+      - name: Pull keycloak image
+        run: docker pull jboss/keycloak:16.1.1
+    
+      - name: Tag keycloak image
+        run: docker tag jboss/keycloak:16.1.1 docker.iffective.dk/keycloak
+        
+      - name: Push keycloak image
+        run: docker push docker.iffective.dk/keycloak
         
       - name: Pull nginx image
         run: docker pull nginx:1.25.0
