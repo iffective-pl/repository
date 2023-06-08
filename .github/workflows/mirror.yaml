@@ -10,21 +10,45 @@ jobs:
     name: Mirror Images
     runs-on: ubuntu-latest
     environment: production
-    strategy:
-        matrix:
-          image: ["postgres:15.3","nginx:1.25.0","mcr.microsoft.com/dotnet/sdk:6.0","node:20.2.0"]
     steps:
-      - name: Pull Image from Docker Hub
-        run: docker pull ${{ matrix.image }}
-    
-      - name: Tag Image
-        run: docker tag ${{ matrix.image }} docker.iffective.dk/${{ matrix.image }}
-      
       - name: Login to container registry
         run: docker login docker.iffective.dk -u docker -p ${{ secrets.DOCKER_PASSWORD }}
+    
+      - name: Pull postgres image
+        run: docker pull postgres:15.3
+    
+      - name: Tag postgres image
+        run: docker tag postgres:15.3 docker.iffective.dk/postgres
         
-      - name: Push Image
-        run: docker push docker.iffective.dk/${{ matrix.image }}
+      - name: Push postgres image
+        run: docker push docker.iffective.dk/postgres
+        
+      - name: Pull nginx image
+        run: docker pull nginx:1.25.0
+    
+      - name: Tag nginx image
+        run: docker tag nginx:1.25.0 docker.iffective.dk/nginx
+        
+      - name: Push nginx image
+        run: docker push docker.iffective.dk/nginx
+        
+      - name: Pull dotnet image
+        run: docker pull mcr.microsoft.com/dotnet/sdk:6.0
+    
+      - name: Tag dotnet image
+        run: docker tag mcr.microsoft.com/dotnet/sdk:6.0 docker.iffective.dk/dotnet
+        
+      - name: Push dotnet image
+        run: docker push docker.iffective.dk/dotnet
+        
+      - name: Pull node image
+        run: docker pull node:20.2.0
+    
+      - name: Tag node image
+        run: docker tag node:20.2.0 docker.iffective.dk/node
+        
+      - name: Push node image
+        run: docker push docker.iffective.dk/node
         
       - name: Logout from container registry
         run: docker logout
