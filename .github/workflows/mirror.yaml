@@ -24,10 +24,10 @@ jobs:
         run: docker push docker.iffective.dk/postgres
         
       - name: Pull keycloak image
-        run: docker pull jboss/keycloak:16.1.1
+        run: docker pull quay.io/keycloak/keycloak:21.1.1
     
       - name: Tag keycloak image
-        run: docker tag jboss/keycloak:16.1.1 docker.iffective.dk/keycloak
+        run: docker tag quay.io/keycloak/keycloak:21.1.1 docker.iffective.dk/keycloak
         
       - name: Push keycloak image
         run: docker push docker.iffective.dk/keycloak
